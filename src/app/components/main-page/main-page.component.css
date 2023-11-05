@@ -1,0 +1,40 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    /* background-image: url("https://img.freepik.com/premium-vector/interbank-currency-exchange_387612-259.jpg"); */
+    background-image: url("img\72884357855.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.card{
+    margin-left: 150px;
+    color: white;
+}
+
+.card h1{
+    font-size: 60px;
+}
+
+.card-title{
+    font-size: 20px;
+}
+
+.card-text{
+    font-size: 14px;
+}
+
+a{
+    width: 200px;
+    border: 1px solid black;
+    padding: 10px;
+    box-shadow: 0px 3px 6px black;
+}
+
+.register{
+    margin-right: 8px;
+}

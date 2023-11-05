@@ -1,0 +1,55 @@
+<body>
+    <header class="main-page-header mb-3 bg-primary">
+        <div class="container d-flex align-items-center">
+            <div class="bank-name">
+                Aurionpro Bank
+            </div>
+            <nav class="navigation">
+                <li><a routerLink="/requests">Requests</a></li>
+                <li><a href="">Queries</a></li>
+                <li><a routerLink="/passbook">Transaction History</a></li>
+            </nav>
+            <div class="display-name ms-auto text-white">
+                <i class="fa fa-circle text-success me-2"></i> Welcome Admin, {{admin.username}}
+            </div>
+            <a routerLink="/home/login/admin" class="btn btn-sm text-white ms-2">
+                <i class="fa fa-sign-out me-1"></i>Sign out
+            </a>
+        </div>
+    </header>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-4 my-2" *ngFor="let u of users">
+                <div class="card">
+                    <div class="card-body shadow-lg">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <ul class="list-group">
+                                    <li class="list-group-item bg-light"><span class="fw-bold">User-Id : </span>{{u.id}}</li>
+                                    <li class="list-group-item bg-light"><span class="fw-bold">Name: </span>{{u.firstName}} {{u.lastName}}</li>
+                                    <li class="list-group-item bg-light"><span class="fw-bold">Username : </span>{{u.username}}</li>
+                                </ul>
+                                <div class="col mt-3 d-flex align-items-center justify-content-center">
+                                    <a routerLink="/contacts/view/">
+                                        <button class="btn btn-success">
+                                            <i class="fa fa-eye me-1"></i>View
+                                        </button>
+                                    </a>
+                                    <a routerLink="/contacts/edit/">
+                                        <button class="btn btn-secondary">
+                                            <i class="fa fa-edit me-1"></i>Update
+                                        </button>
+                                    </a>
+                                    <button class="btn btn-danger">
+                                        <i class="fa fa-trash me-1"></i>Delete
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

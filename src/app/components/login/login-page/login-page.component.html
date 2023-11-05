@@ -1,0 +1,54 @@
+<body class="d-flex align-items-center justify-content-center">
+    <div class="card col-6 bg-transparent border-0">
+        <div class="card-body">
+            <h1 class="form-header card-title mb-3">
+                <i class="fa fa-user-circle me-1"></i>Login
+            </h1>
+            <div class="form reg-form">
+                <form [formGroup]="userLoginForm" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <div class="form-group">
+                            <input type="text" name="username" formControlName="username" class="form-control"
+                                placeholder="Enter Username" required />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col">
+                            <input type="password" name="password" formControlName="password" class="form-control "
+                                placeholder="Enter Password" required />
+                        </div>
+                    </div>
+
+                    <div class="row mt-2 mb-3">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success btn-lg">
+                                <i class="fa fa-sign-in"></i> Sign-in
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="row my-2">
+                        <p class="card-text">Admin? <span><a routerLink="/home/login/admin" class="text-white">Click
+                                    here for admin login</a></span>
+                        </p>
+                    </div>
+
+                    <div class="row my-2">
+                        <p class="card-text">Don't have account? <span><a routerLink="/home/register"
+                                    class="text-white">Register</a></span>
+                        </p>
+                    </div>
+
+                    <div class="row mt-2 mb-3">
+                        <div class="form-group">
+                            <a routerLink="/home" class="btn btn-warning btn-sm">
+                                <i class="fa fa-arrow-left"></i> Back
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>

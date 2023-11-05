@@ -1,0 +1,37 @@
+<body class="d-flex align-items-center justify-content-center">
+    <div class="card col-6 bg-transparent border-0">
+        <div class="card-body">
+            <h1 class="form-header card-title mb-3">
+                <i class="fa fa-bank"></i> Admin Login
+            </h1>
+            <div class="form reg-form">
+                <form [formGroup]="adminLoginForm" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <div class="form-group">
+                            <input type="text" name="username" formControlName="username" class="form-control " placeholder="Enter Admin Username" required />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col">
+                            <input type="password" name="password" formControlName="password" class="form-control " placeholder="Enter Admin Password" required />
+                        </div>
+                    </div>
+                    <div class="row mt-2 mb-3">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success btn-lg">
+                                <i class="fa fa-sign-in"></i> Sign-in
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row mt-2 mb-3">
+                        <div class="form-group">
+                            <a routerLink="/home/login" class="btn btn-warning btn-sm">
+                                <i class="fa fa-arrow-left"></i> Back
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>

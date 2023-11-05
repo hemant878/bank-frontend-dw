@@ -1,0 +1,203 @@
+<body>
+    <header class="main-page-header mb-3 bg-primary">
+        <div class="container d-flex align-items-center">
+            <div class="bank-name">
+                Aurionpro Bank
+            </div>
+            <nav class="navigation">
+                <li><a href="">Dashboard</a></li>
+                <li><a routerLink="/passbook">Transaction History</a></li>
+            </nav>
+            <div class="display-name ms-auto text-white">
+                <i class="fa fa-circle text-success me-2"></i> Welcome, <span>{{user.firstName}}
+                    {{user.lastName}}</span>
+            </div>
+            <a routerLink="/home/login" class="btn btn-sm text-white ms-2">
+                <i class="fa fa-sign-out me-1"></i>Sign out
+            </a>
+        </div>
+    </header>
+
+    <div *ngIf="accountsCheck">
+        <div class="container d-flex">
+            <a class="btn btn-primary border-2 bg-transparent text-primary" data-bs-toggle="offcanvas"
+                href="#addNewAccountCanvas" role="button">
+                <i class="fa fa-plus me-1"></i>Add new Account
+            </a>
+            <a class="btn btn-warning ms-auto" data-bs-toggle="offcanvas" href="#transactionCanvas" role="button">
+                <i class="fa fa-exchange me-1"></i>Transaction
+            </a>
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="transactionCanvas">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title">Transaction</h5>
+                </div>
+                <div class="offcanvas-body">
+                    <small class="card-text">Choose a transction type</small>
+                    <select class="form-control" [(ngModel)]="selectedOption" (change)="onSelectedChange(selectedOption)">
+                        <option value="">-- Select type Of Transaction --</option>
+                        <option value="deposit">Deposit</option>
+                        <option value="withdraw">Withdraw</option>
+                        <option value="transfer">Transfer</option>
+                    </select>
+
+                    <div class="card mt-5" *ngIf="selectedOption === 'deposit'">
+                        <div class="card-body">
+                            <form>
+                                <div class="form-group">
+                                    <label>Enter Deposit amount</label>
+                                    <input type="number" class="form-control" placeholder="Enter amount">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <label>Select Account</label>
+                                    <select class="form-control">
+                                        <option value="">-- select Account --</option>
+                                        <option *ngFor="let a of accounts" value="{{a.id}}">{{a.accountName}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <button class="btn btn-success">
+                                        <i class="fa fa-wallet me-1"></i>Deposit
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="card mt-5" *ngIf="selectedOption === 'withdraw'">
+                        <div class="card-body">
+                            <form>
+                                <div class="form-group">
+                                    <label>Enter Withdraw amount</label>
+                                    <input type="number" class="form-control" placeholder="Enter amount">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <label>Select Account</label>
+                                    <select class="form-control">
+                                        <option value="">-- select Account --</option>
+                                        <option *ngFor="let a of accounts" value="{{a.id}}">{{a.accountName}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <button class="btn btn-danger">
+                                        <i class="fa fa-money-bill me-1"></i>Withdraw
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="card mt-5" *ngIf="selectedOption === 'transfer'">
+                        <div class="card-body">
+                            <form>
+                                <div class="form-group">
+                                    <label>Enter transfer amount</label>
+                                    <input type="number" class="form-control" placeholder="Enter amount">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <label>Select Account</label>
+                                    <select class="form-control">
+                                        <option value="">-- select Account --</option>
+                                        <option *ngFor="let a of accounts" value="{{a.id}}">{{a.accountName}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Enter receiver account number</label>
+                                    <input type="text" class="form-control" placeholder="Enter account number">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <button class="btn btn-warning">
+                                        <i class="fa fa-credit-card me-1"></i>Transfer
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container d-flex py-2">
+            <h2 class="me-auto">Total accounts balance :</h2>
+            <h2 class="ms-auto">0.00</h2>
+        </div>
+
+        <div *ngFor="let a of accounts">
+            <div class="container">
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="flush-headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                aria-controls="flush-collapseOne">
+                                {{a.accountName}}
+                            </button>
+                        </h4>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse"
+                            aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">Placeholder content for this accordion.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="!accountsCheck">
+        <div class="container">
+            <div class="card no-accounts-card">
+                <div class="card-body">
+                    <h1 class="card-title">
+                        <i class="fa fa-ban text-danger"></i> No registered Accounts
+                    </h1>
+                    <hr>
+                    <div class="card-text">
+                        You currently don't have any accounts!! <br>
+                        Please click below to add a new account
+                    </div><br>
+                    <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#addNewAccountCanvas" role="button">
+                        <i class="fa fa-plus me-1"></i>Add new Account
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="addNewAccountCanvas">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Add new Account</h5>
+        </div>
+        <div class="offcanvas-body">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <label>Enter Account Name</label>
+                            <input type="text" class="form-control" placeholder="Enter amount">
+                        </div>
+                        <div class="form-group mt-2">
+                            <label>Select Account type</label>
+                            <select class="form-control">
+                                <option value="">-- select Account --</option>
+                                <option value="savings">Savings</option>
+                                <option value="current">Current</option>
+                            </select>
+                        </div>
+                        <div class="form-group mt-2">
+                            <label>Upload Document</label>
+                            <input type="text" class="form-control" placeholder="upload document">
+                            <small>*We don't share your documents with third party</small><br>
+                            <small>*They are required by order of Indian Government</small>
+                        </div>
+                        <div class="form-group mt-2">
+                            <button class="btn btn-primary">
+                                <i class="fa fa-bank me-1"></i>Request Opening
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
