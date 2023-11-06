@@ -1,1 +1,26 @@
-<p>update-user works!</p>
+
+<app-adminhome></app-adminhome>
+<form (ngSubmit)="updateUser()" #updateForm="ngForm" class="container w-50 mt-4"  >
+  <div class="mb-3">
+    <label for="updateFirstName" class="form-label">First Name</label>
+    <input type="text" class="form-control" [(ngModel)]="user.firstname" name="firstName" value="{{ user.firstname }}" required>
+  </div>
+  <div class="mb-3">
+    <label for="updateLastName" class="form-label">Last Name</label>
+    <input type="text" class="form-control" [(ngModel)]="user.lastname" name="lastName" value="{{ user.lastname }}" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="updateFirstName" class="form-label">UserName</label>
+    <input type="text" class="form-control" [(ngModel)]="user.username" name="username" value="{{ user.username }}" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="updateFirstName" class="form-label">Email</label>
+    <input type="text" class="form-control" [(ngModel)]="user.email" name="email" value="{{ user.email }}" required>
+  </div>
+
+
+  <button type="button" class="btn btn-primary" (click)="updateUser()">Update</button>
+
+</form>

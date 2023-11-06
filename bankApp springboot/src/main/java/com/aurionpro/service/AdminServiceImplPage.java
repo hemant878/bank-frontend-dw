@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Repository
-public class AdminServiceImpl implements AdminService {
+public class AdminServiceImplPage implements AdminService {
 	
 	@Autowired
 	private AdminRepository adminRepository;

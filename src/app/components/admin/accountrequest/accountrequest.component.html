@@ -1,0 +1,14 @@
+<app-adminhome></app-adminhome>
+<!--  -->
+  
+  <div class="card mt-3 mx-3" style="width: 33rem;" *ngFor="let item of accountrequest">
+    <div class="card-header b1">
+      User ID :  {{ item.id }}
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">  <p><a [href]="getSafeUrl(item.fileName)" download>File Name: {{ item.fileName }}</a></p></li>
+      <li class="list-group-item"><p><a [href]="getSafeUrl(item.filepancard)" download>File Pan Card: {{ item.filepancard }}</a></p></li>
+      <li class="list-group-item">    <p><a [href]="getSafeUrl(item.fileadharcard)" download>File Aadhar Card: {{ item.fileadharcard }}</a></p></li>
+    </ul>
+    <a href="#" class="btn btn-primary " style="width: 10rem;">Accept</a>
+  </div>

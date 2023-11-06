@@ -1,0 +1,19 @@
+<app-adminhome></app-adminhome>
+<!-- <td>
+    <span *ngFor="let query of query">
+      {{ query.id }}
+      {{ query.text }}
+    </span>
+</td> -->
+
+
+<div class="card container mt-3" *ngFor="let query of query">
+  <div class="card-header" class="b p-3 mt-3">
+   User ID :  {{ query.id }}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"></h5>
+    <p class="card-text">  {{ query.text }}</p>
+    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+  </div>
+</div>

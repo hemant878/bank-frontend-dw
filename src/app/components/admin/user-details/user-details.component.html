@@ -1,0 +1,76 @@
+<app-adminhome></app-adminhome>
+
+
+
+
+
+
+
+
+<div class="page-content page-container bg" id="page-content" *ngFor="let user of user">
+  <div class="padding">
+ <div class="row container d-flex justify-content-center">
+      <div class="col-xl-6 col-md-12">
+              <div class="card user-card-full">
+                  <div class="row m-l-0 m-r-0">
+                      <div class="col-sm-4 bg-c-lite-green user-profile">
+                          <div class="card-block text-center text-white">
+                              <div class="m-b-25">
+                                  <img src="https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-Image.png" class="img-radius w-100" alt="User-Profile-Image">
+                              </div>
+                              <h6 class="f-w-600">{{ user.firstname }} {{ user.lastname }}</h6>
+                              <p>{{ user.roleid }}</p>
+                              <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+                          </div>
+                      </div>
+                      <div class="col-sm-8">
+                          <div class="card-block">
+                              <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
+                              <div class="row">
+                                  <div class="col-sm-6">
+                                      <p class="m-b-10 f-w-600">User ID</p>
+                                      <h6 class="text-muted f-w-400">{{ user.userid }}</h6>
+                                  </div>
+                                  <div class="col-sm-6">
+                                      <p class="m-b-10 f-w-600">Email</p>
+                                      <h6 class="text-muted f-w-400">{{ user.email }}</h6>
+                                  </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-sm-6">
+                                    <p class="m-b-10 f-w-600">Role ID</p>
+                                    <h6 class="text-muted f-w-400">{{ user.roleid }}</h6>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p class="m-b-10 f-w-600">UserName</p>
+                                    <h6 class="text-muted f-w-400">{{ user.username }}</h6>
+                                </div>
+                            </div>
+
+
+                            
+                              <div class="row">
+                                  <div class="col-sm-6">
+                                      <p class="m-b-10 f-w-600">Account Numbers</p>
+                                      <span *ngFor="let account of user.accounts; let last = last">
+                                        {{ account.accountno }}{{ !last ? ', ' : '' }}
+                                      </span>
+                                  </div>
+                                  <div class="col-sm-6">
+                                      <p class="m-b-10 f-w-600">Account Balance</p>
+                                      <span *ngFor="let account of user.accounts; let last = last">
+                                        {{ account.balance }}{{ !last ? ', ' : '' }}  
+                                        <!-- {{ getTotalBalance(user.accounts) }} -->
+                                      </span>
+                                  </div>
+                              </div>
+                            
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          </div>
+              </div>
+          </div>

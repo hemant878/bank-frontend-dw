@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IAccounts } from 'src/app/model/iaccounts';
 import { IUser } from 'src/app/model/iuser';
 import { BankService } from 'src/app/services/bank.service';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
     selector: 'app-user-page',
@@ -11,7 +12,7 @@ import { BankService } from 'src/app/services/bank.service';
     styleUrls: ['./user-page.component.css']
 })
 export class UserPageComponent {
-    constructor(private route: ActivatedRoute, private bankService: BankService) { }
+    constructor(private route: ActivatedRoute, private bankService: BankService,private dataservice:DataService,private router:Router) { }
     user: IUser = {} as IUser;
     accounts: IAccounts[] = [] as IAccounts[];
     userId: string | null = "";
@@ -57,4 +58,11 @@ export class UserPageComponent {
     onSelectedChange(option: string) {
         this.selectedOption = option;
     }
+
+
+    onSubmit(){
+        this.dataservice.accountRequest(this.user).subscribe((data)=>{
+          this.router.navigate(['/']).then();
+        })
+      }
 }

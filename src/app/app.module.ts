@@ -25,6 +25,15 @@ import { RegisterComponent } from './components/register/register.component';
 import { AdminLoginComponent } from './components/login/admin-login/admin-login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
+import { AdminhomeComponent } from './components/admin/adminhome/adminhome.component';
+import { TransactionComponent } from './components/admin/transaction/transaction.component';
+import { SettingsComponent } from './components/admin/settings/settings.component';
+import { QueryComponent } from './components/admin/query/query.component';
+import { AllUserComponent } from './components/admin/all-user/all-user.component';
+import { AddUserComponent } from './components/admin/add-user/add-user.component';
+import { UserDetailsComponent } from './components/admin/user-details/user-details.component';
+import { AccountrequestComponent } from './components/admin/accountrequest/accountrequest.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -48,14 +57,33 @@ import { HttpClientModule } from '@angular/common/http'
     PageNotFoundComponent,
     MainPageComponent,
     RegisterComponent,
-    AdminLoginComponent
+    AdminLoginComponent,
+    AdminhomeComponent,
+    TransactionComponent,
+    SettingsComponent,
+    QueryComponent,
+    AddUserComponent,
+    AllUserComponent,
+    UpdateUserComponent,
+    TransactionComponent,
+    // UserAccountsComponent,
+    // UserPassbookComponent,
+    // UserFixeddepositComponent,
+    // UserQueryComponent,
+    LoginPageComponent,
+    UserPageComponent,
+    RegisterComponent,
+    UserDetailsComponent,
+    AccountrequestComponent,
   ],
   imports: [
     BrowserModule,
+    RouterModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

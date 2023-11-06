@@ -39,7 +39,7 @@ export class AdminLoginComponent {
                 if (data != null) {
                     this.setDetails(data);
                     console.log(this.admin);
-                    this.router.navigate(["/admin/", this.admin.id]);
+                    this.router.navigate(["/all-user"]);
                 } else {
                     this.router.navigate(["af"]);
                 }

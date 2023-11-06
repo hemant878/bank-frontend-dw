@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @RestController
 @RequestMapping("/bank")
 @CrossOrigin("http://localhost:4200")
-public class AdminController {
+public class AdminControllerPage {
 	
 	@Autowired
 	private AdminService adminService;
