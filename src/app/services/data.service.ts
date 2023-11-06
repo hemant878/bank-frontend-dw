@@ -10,6 +10,7 @@ export class DataService {
   private queryurl = 'http://localhost:8081/query';
    private accountrequesturl = 'http://localhost:8081/files';
    private url1='http://localhost:8081/bank/requests'
+   private baseUrl = 'http://localhost:8081'; 
 
   constructor(private http: HttpClient) {}
 
@@ -17,6 +18,14 @@ export class DataService {
     return this.http.post<any>(this.url1,user).pipe(catchError(this.handleError));
   }
 
+
+  depositFunds(accountId: number, amount: number) {
+    return this.http.post(`${this.baseUrl}/deposit/${accountId}?amount=${amount}`, null);
+  }
+
+  withdrawFunds(accountId: number, amount: number) {
+    return this.http.post(`${this.baseUrl}/withdraw/${accountId}?amount=${amount}`, null);
+  }
   // public addContacts(contact:IContact):Observable<IContact>{
   //   let dataUrl=`${this.serverUrl}/contacts`;
   //   return this.httpClient.post<IContact>(dataUrl,contact).pipe(catchError(this.handleError));

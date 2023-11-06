@@ -20,6 +20,8 @@ export class UserPageComponent {
     public errorMessage: string | null = null;
     selectedOption: string = "";
     accountsCheck: boolean = true;
+    amount!: number;
+  selectedAccountId!: number;
 
     ngOnInit() {
         this.route.paramMap.subscribe((param) => {
@@ -64,5 +66,55 @@ export class UserPageComponent {
         this.dataservice.accountRequest(this.user).subscribe((data)=>{
           this.router.navigate(['/']).then();
         })
+      }
+
+
+
+    //   deposit() {
+    //     this.dataservice.depositFunds(this.accountId, this.amount).subscribe(
+    //       () => {
+    //         console.log('Funds deposited successfully.');
+    //       },
+    //       (error) => {
+    //         console.error('Error depositing funds:', error);
+    //       }
+    //     );
+    //   }
+
+
+      deposit() {
+        if (this.selectedAccountId && this.amount) {
+          this.dataservice.depositFunds(this.selectedAccountId, this.amount).subscribe(
+            () => {
+              console.log('Funds deposited successfully.');
+             
+            },
+            (error) => {
+              console.error('Error depositing funds:', error);
+              window.location.reload();
+            }
+          );
+        } else {
+          console.error('Please select an account and enter the amount.');
+        }
+      }
+
+
+      
+      withdrawDeposit() {
+        if (this.selectedAccountId && this.amount) {
+          this.dataservice.withdrawFunds(this.selectedAccountId, this.amount).subscribe(
+            () => {
+              console.log('Funds deposited successfully.');
+              window.location.reload();
+            },
+            (error) => {
+              console.error('Error depositing funds:', error);
+              window.location.reload();
+            }
+          );
+        } else {
+          console.error('Please select an account and enter the amount.');
+        }
       }
 }

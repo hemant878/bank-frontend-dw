@@ -44,22 +44,27 @@
                         <div class="card-body">
                             <form>
                                 <div class="form-group">
-                                    <label>Enter Deposit amount</label>
-                                    <input type="number" class="form-control" placeholder="Enter amount">
+                                  <label>Account number</label>
+                                  <input type="number" class="form-control" placeholder="Enter account number" [(ngModel)]="selectedAccountId" name="selectedAccountId">
+                                </div>
+                                <div class="form-group">
+                                  <label>Enter Deposit amount</label>
+                                  <input type="number" class="form-control" placeholder="Enter amount" [(ngModel)]="amount" name="amount">
                                 </div>
                                 <div class="form-group mt-2">
-                                    <label>Select Account</label>
-                                    <select class="form-control">
-                                        <option value="">-- select Account --</option>
-                                        <option *ngFor="let a of accounts" value="{{a.id}}">{{a.accountName}}</option>
-                                    </select>
+                                  <label>Select Account</label>
+                                  <select class="form-control" [(ngModel)]="selectedAccountId">
+                                    <option value="">-- select Account --</option>
+                                    <option *ngFor="let a of accounts" [value]="a.id">{{a.accountName}}</option>
+                                  </select>
                                 </div>
                                 <div class="form-group mt-2">
-                                    <button class="btn btn-success">
-                                        <i class="fa fa-wallet me-1"></i>Deposit
-                                    </button>
+                                  <button class="btn btn-success" (click)="deposit()">
+                                    <i class="fa fa-wallet me-1"></i>Deposit
+                                  </button>
                                 </div>
-                            </form>
+                              </form>
+                              
                         </div>
                     </div>
 
@@ -67,22 +72,26 @@
                         <div class="card-body">
                             <form>
                                 <div class="form-group">
-                                    <label>Enter Withdraw amount</label>
-                                    <input type="number" class="form-control" placeholder="Enter amount">
+                                  <label>Account number</label>
+                                  <input type="number" class="form-control" placeholder="Enter account number" [(ngModel)]="selectedAccountId" name="selectedAccountId">
+                                </div>
+                                <div class="form-group">
+                                  <label>Enter Deposit amount</label>
+                                  <input type="number" class="form-control" placeholder="Enter amount" [(ngModel)]="amount" name="amount">
                                 </div>
                                 <div class="form-group mt-2">
-                                    <label>Select Account</label>
-                                    <select class="form-control">
-                                        <option value="">-- select Account --</option>
-                                        <option *ngFor="let a of accounts" value="{{a.id}}">{{a.accountName}}</option>
-                                    </select>
+                                  <label>Select Account</label>
+                                  <select class="form-control" [(ngModel)]="selectedAccountId">
+                                    <option value="">-- select Account --</option>
+                                    <option *ngFor="let a of accounts" [value]="a.id">{{a.accountName}}</option>
+                                  </select>
                                 </div>
                                 <div class="form-group mt-2">
-                                    <button class="btn btn-danger">
-                                        <i class="fa fa-money-bill me-1"></i>Withdraw
-                                    </button>
+                                  <button class="btn btn-success" (click)="withdrawDeposit()">
+                                    <i class="fa fa-wallet me-1"></i>withdraw
+                                  </button>
                                 </div>
-                            </form>
+                              </form>
                         </div>
                     </div>
 
@@ -123,13 +132,16 @@
 
         <div *ngFor="let a of accounts">
             <div class="container">
+              
                 <div class="accordion accordion-flush" id="accordionFlushExample">
                     <div class="accordion-item">
                         <h4 class="accordion-header" id="flush-headingOne">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#flush-collapseOne" aria-expanded="false"
                                 aria-controls="flush-collapseOne">
-                                {{a.accountName}}
+                                <p>Account Name: {{a.accountName}}</p>
+                                <p style="margin-left: 55%;"> Total Account Balance: {{a.balance}}</p>
+                                       
                             </button>
                         </h4>
                         <div id="flush-collapseOne" class="accordion-collapse collapse"
